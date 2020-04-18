@@ -38,7 +38,9 @@ template: `
         </div>
     `,
     created: function(){
-        fetch('https://newsapi.org/v2/top-headlines?country=us&apiKey=<your-api-')
+        fetch('http://newsapi.org/v2/top-headlines?' +
+              'country=us&' +
+              'apiKey=92b0ce3b21e94a5e9c5b005ba5c6a517')
         .then(function(response){
             return response.json();
         })
