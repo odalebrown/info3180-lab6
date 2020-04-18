@@ -38,6 +38,7 @@ template: `
         </div>
     `,
     created: function(){
+        let self = this;
         fetch('http://newsapi.org/v2/top-headlines?' +
               'country=us&' +
               'apiKey=92b0ce3b21e94a5e9c5b005ba5c6a517')
@@ -49,8 +50,10 @@ template: `
             self.articles = data.articles;
         });
     },
-        data: function() {
-      return {};
+    data: function(){
+        return {
+            articles: []
+        }
     }
 });
 
