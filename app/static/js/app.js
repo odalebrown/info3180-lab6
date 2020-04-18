@@ -37,6 +37,16 @@ template: `
             </ul>
         </div>
     `,
+    created: function(){
+        fetch('https://newsapi.org/v2/top-headlines?country=us&apiKey=<your-api-')
+        .then(function(response){
+            return response.json();
+        })
+        .then(function(data) {
+            console.log(data);
+            self.articles = data.articles;
+        });
+    },
         data: function() {
       return {};
     }
