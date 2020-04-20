@@ -83,6 +83,21 @@ template: `
         }
     }
 });
+const Home = Vue.component('home', {
+    template: `
+        <div class="home">
+            <img src="/static/images/logo.png" alt="VueJS Logo">
+            <h1>{{ welcome }}</h1>
+        </div>
+    `,
+    data: function() {
+        return {
+            welcome: 'Hello World! Welcome to VueJS'
+        }
+    }
+});
+
+
 Vue.component('app-footer', {
     template: `
         <footer>
