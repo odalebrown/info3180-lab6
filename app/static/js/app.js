@@ -45,6 +45,7 @@ template: `
                 <label class="sr-only" for="search">Search</label>
                 <input type="search" name="search" v-model="searchTerm" id="search" class="form-control mb-2 mr-sm-2" placeholder="Enter search term here" />
                 <p>You are searching for {{ searchTerm }}</p>
+                <button class="btn btn-primary mb-2" @click="searchNews">Search</button>
 
              </div>
       </div>
@@ -68,7 +69,20 @@ template: `
             searchTerm: ''
         }
     },
-   });
+    methods: {
+        searchNews: function() {
+            let self = this;
+            fetch('https://newsapi.org/v2/everything?q='+self.searchTerm + '&language=en&apiKey=<api-key>')
+            .then(function(response) {
+                return response.json();
+             })
+             .then(function(data) {
+                 console.log(data);
+                     self.articles = data.articles;
+            });
+        }
+    }
+});
 Vue.component('app-footer', {
     template: `
         <footer>
