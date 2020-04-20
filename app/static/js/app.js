@@ -28,37 +28,47 @@ Vue.component('app-header', {
 /* New list Component */
 Vue.component('news-list', {
 template: `
-        <div class = "news">
+    <div>
+       <div class = "news">
             <h2 News </h2>
             <ul class = "news__list">
               <li v-for="article in articles"class="news__item">
                 {{ article.title }}
-                <img :src = "article.urlToImage">
                 {{article.description}}
+                <img :src = "article.urlToImage">
               </li>
             </ul>
         </div>
+
+      <div class="form-inline d-flex justify-content-center">
+            <div class="form-group mx-sm-3 mb-2">
+                <label class="sr-only" for="search">Search</label>
+                <input type="search" name="search" v-model="searchTerm" id="search" class="form-control mb-2 mr-sm-2" placeholder="Enter search term here" />
+                <p>You are searching for {{ searchTerm }}</p>
+
+             </div>
+      </div>
+    </div>
     `,
     created: function(){
         let self = this;
-        fetch('http://newsapi.org/v2/top-headlines?' +
-              'country=us&' +
-              'apiKey=92b0ce3b21e94a5e9c5b005ba5c6a517')
+        fetch('http://newsapi.org/v2/top-headlines?' + 'country=us&' + 'apiKey=92b0ce3b21e94a5e9c5b005ba5c6a517')
         .then(function(response){
             return response.json();
         })
         .then(function(data) {
             console.log(data);
-                self.articles = data.articles;
+            self.articles = data.articles;
         });
     },
-    data: function(){
+    data: function()
+    {
         return {
-            articles: []
+            articles:[],
+            searchTerm: ''
         }
-    }
-});
-
+    },
+   });
 Vue.component('app-footer', {
     template: `
         <footer>
