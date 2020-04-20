@@ -120,10 +120,9 @@ Vue.component('app-footer', {
     }
 })
 
-let app = new Vue({
+const app = new Vue({
     el: '#app',
-    data: {
-        welcome: 'Hello World! Welcome to VueJS'
-    }
-});
+    router
+ })
+
 
