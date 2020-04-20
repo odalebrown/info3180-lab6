@@ -26,7 +26,7 @@ Vue.component('app-header', {
     }
 });
 /* New list Component */
-Vue.component('news-list', {
+const NewsList = Vue.component('news-list', {
 template: `
     <div>
        <div class = "news">
@@ -97,6 +97,13 @@ const Home = Vue.component('home', {
     }
 });
 
+const router = new VueRouter({
+    mode: 'history',
+    routes: [
+        { path: '/', component: Home },
+        { path: '/news', component: NewsList }
+    ]
+});
 
 Vue.component('app-footer', {
     template: `
