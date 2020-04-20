@@ -31,8 +31,11 @@ template: `
         <div class = "news">
             <h2 News </h2>
             <ul class = "news__list">
-                <li v-for="article in articles"
-        class="news__item">{{ article.title }}</li>
+              <li v-for="article in articles"class="news__item">
+                {{ article.title }}
+                <img :src = "article.urlToImage">
+                {{article.description}}
+              </li>
             </ul>
         </div>
     `,
@@ -46,7 +49,7 @@ template: `
         })
         .then(function(data) {
             console.log(data);
-            self.articles = data.articles;
+                self.articles = data.articles;
         });
     },
     data: function(){
